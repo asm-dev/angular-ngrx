@@ -1,11 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-
+import { Store } from '@ngrx/store';
+import { reset } from '../../../state/counter.actions';
 @Component({
   selector: 'app-counter-reset',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './counter-reset.component.html',
-  styleUrl: './counter-reset.component.scss'
+  styleUrls: ['./counter-reset.component.scss'],
 })
 export class CounterResetComponent {
+  constructor(private store: Store) {}
 
+  reset() {
+    this.store.dispatch(reset());
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { ChartBarComponent } from './components/chart/chart-bar/chart-bar.component';
 import { ChartLineComponent } from './components/chart/chart-line/chart-line.component';
 import { CounterDecreaseComponent } from './components/counter/counter-decrease/counter-decrease.component';
@@ -16,6 +17,7 @@ import { CounterValueComponent } from './components/counter/counter-value/counte
     CounterResetComponent,
     ChartLineComponent,
     ChartBarComponent,
+    MatCardModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

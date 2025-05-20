@@ -9,7 +9,7 @@ import {
   signal,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ChartConfiguration } from 'chart.js';
+import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { selectCounter } from '../../../state/counter.selectors';
 
@@ -25,16 +25,36 @@ export class ChartLineComponent {
   private values = signal<number[]>([]);
   private lastValue: number | null = null;
 
-  lineChartData = computed<ChartConfiguration<'line'>['data']>(() => ({
+  // ✅ Opciones claras para gráfico de líneas
+  public lineChartOptions: ChartOptions<'line'> = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+      },
+    },
+    elements: {
+      line: {
+        tension: 0.4,
+      },
+      point: {
+        radius: 5,
+      },
+    },
+  };
+
+  public lineChartData = computed<ChartConfiguration<'line'>['data']>(() => ({
     labels: this.labels(),
     datasets: [
       {
         data: this.values(),
         label: 'Evolución del contador',
         fill: true,
-        tension: 0.4,
         borderColor: '#1976d2',
         backgroundColor: 'rgba(25, 118, 210, 0.2)',
+        pointBorderColor: '#1976d2',
+        pointBackgroundColor: '#ffffff',
       },
     ],
   }));

@@ -1,23 +1,23 @@
-# Aplicación de contador con NgRX
+# Counter application with NgRX
 
-Este proyecto es una prueba de concepto (POC) desarrollada en Angular con el objetivo de explorar el funcionamiento de **NgRx**, la librería de gestión de estado basada en Redux adaptada para Angular. La aplicación implementa un contador global controlado por múltiples componentes, junto a la visualización dinámica de su evolución mediante gráficos interactivos.
+This project is a proof of concept (POC) developed in Angular with the goal of exploring how **NgRx** works, the Redux-based state management library adapted for Angular. The application implements a global counter controlled by multiple components, along with a dynamic visualization of its evolution through interactive charts.
 
 ![image](https://github.com/user-attachments/assets/a4a22866-3a83-4a6d-ac03-436cbb0c47fb)
 
 
-## ¿Qué es NgRx y para qué se usa?
+## What is NgRx and what is it used for?
 
-NgRx proporciona una arquitectura basada en flujos unidireccionales y gestión centralizada del estado, ideal para aplicaciones Angular de tamaño medio a grande. Está inspirado en Redux, y hace uso extensivo de `RxJS`, así como de nuevas capacidades de Angular como `signals` para acceder de forma más reactiva al estado.
+NgRx provides an architecture based on unidirectional data flows and centralized state management, ideal for medium to large Angular applications. It is inspired by Redux, and makes extensive use of `RxJS`, as well as newer Angular capabilities such as `signals` to access the state in a more reactive way.
 
-- Se define una `store` global que mantiene el estado de la aplicación.
-- El estado sólo puede modificarse mediante `actions`, las cuales son gestionadas por `reducers`.
-- El acceso al estado se realiza a través de `selectors`, que extraen partes del estado de forma estructurada.
+- A global `store` is defined that holds the application state.
+- The state can only be modified through `actions`, which are handled by `reducers`.
+- The state is accessed through `selectors`, which extract parts of the state in a structured way.
 
-Esta separación de responsabilidades garantiza predictibilidad, escalabilidad y facilidad de testing. La **implementación de NgRX en la estructura funcional** de esta POC se basa en la utilización de:
+This separation of concerns guarantees predictability, scalability and ease of testing. The **NgRX implementation in the functional structure** of this POC is based on the use of:
 
-- Un store central: Se define un `counterReducer` que responde a acciones como `increment`, `decrement` y `reset`.
-- Uso de componentes independientes:
-  - `CounterDisplay`: muestra el valor actual del contador.
-  - `IncrementButton`, `DecrementButton`, `ResetButton`: modifican el estado de forma aislada.
-  - `ChartLine`, `ChartBar`: renderizan la evolución del estado a lo largo del tiempo.
-- Empleo de _signals_: Se utiliza `selectSignal()` de NgRx para vincular el estado global al re-renderizado automático de los componentes gráficos.
+- A central store: A `counterReducer` is defined that responds to actions such as `increment`, `decrement` and `reset`.
+- Use of standalone components:
+  - `CounterDisplay`: shows the current value of the counter.
+  - `IncrementButton`, `DecrementButton`, `ResetButton`: modify the state in isolation.
+  - `ChartLine`, `ChartBar`: render the evolution of the state over time.
+- Use of _signals_: NgRx's `selectSignal()` is used to bind the global state to the automatic re-rendering of the chart components.
